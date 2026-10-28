@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @RestController
@@ -61,7 +62,9 @@ public class SaludarControlador {
             <li><a href='/saludador/default'>/saludador/{nombre}</a></li>
             <li><a href='/saludador2/default2'>/saludador2/{nombreX}</a></li>  
             <li>/crearSaludador</li>
-            <li><a href='/obtenerSaludador'>/obtenerSaludador</a></li>      
+            <li><a href='/obtenerSaludador'>/obtenerSaludador</a></li>
+            <li><a href='/getQuery'>/getQuery?nombre=xxx&apellido=yyy</a></li>  
+            <li><a href='/getQuery2'>/getQuery2?nombre=xxx&[apellido=yyy]</a></li>  
         </ul>
         """;
     }
@@ -83,7 +86,7 @@ public class SaludarControlador {
     }
 
     @GetMapping("/getQuery2")
-    public String getQueryString2( @RequestParam String nombre, @RequestParam(default value = "mundo") String apellido,{ {
+    public String getQueryString2( @RequestParam String nombre, @RequestParam(defaultValue = "") String apellido){
         return nombre + " " + apellido;
     }
 }

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear saludador</title>
+</head>
+<body>
+    <h1>Crear saludador</h1>
+    <!--este metodo de enviar información con el formulario no sirve 
+    porque debemos enviar un objeto JSON
+    <form action="http.//localhost:8080/crearSaludador" method="post">
+        <input type="submit">
+    </form>-->
+    <label for="">nombre:</label>
+    <input type="text" id="nombre">
+    <button unclick="crear()">crear</button>
+    <script>
+        url= "http://localhost:8080/crearSaludador"
+        function crear(){
+            //let cuerpo = JSON.parse('{"contenido":"ejemplo"}')
+            //console.log(cuerpo)
+            
+            nombre= document.getElementById("nombre").value 
+            let cuerpo = JSON.stringify({contenido: `{usuario}`})
+            console.log(cuerpo)
+
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type':'application/json'
+                },
+                body: cuerpo
+            })
+            .then(async respuesta =>{
+                console.log(await respuesta)
+            })
+            .catch()
+        }
+
+    </script>
+</body>
+</html>
